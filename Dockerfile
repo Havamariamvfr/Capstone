@@ -1,11 +1,14 @@
-FROM node:18-slim
+FROM node:16
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --only=production
+RUN npm install
 
 COPY . ./
 
-CMD [ "node", "server.js" ]
+# Expose the port that your app will run on 
+EXPOSE 5000
+
+CMD [ "node", "index.js" ]
